@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DentAI — formulario clínico de prueba</title>
+    <link rel="stylesheet" href="demo-form.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#formulario" class="brand">DentAI <span>laboratorio local</span></a>
+      <p>Paciente ficticio · No usar datos reales</p>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="kicker">Prueba segura de automatización</p>
+        <h1>Historia clínica simulada</h1>
+        <p>Abre la extensión, inicia la guía y menciona el nombre de cada campo. DentAI pedirá el valor y una confirmación oral antes de escribir. El botón “Registrar atención” es solo visual: esta página no envía ni guarda datos.</p>
+      </section>
+
+      <form id="formulario" autocomplete="off" onsubmit="return false">
+        <fieldset>
+          <legend>Identificación</legend>
+          <div class="two-columns">
+            <label>
+              Nombre del paciente
+              <input id="patientName" name="patient_name" type="text" placeholder="Nombre y apellidos" />
+            </label>
+            <label>
+              DNI del paciente
+              <input id="documentId" name="document_id" type="text" inputmode="numeric" placeholder="8 dígitos" />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Evaluación odontológica</legend>
+          <div class="three-columns">
+            <label>
+              Pieza dental
+              <input id="tooth" name="tooth" type="number" min="11" max="85" placeholder="Ej. 26" />
+            </label>
+            <label>
+              Síntoma principal
+              <select id="symptom" name="symptom">
+                <option value="">Seleccionar</option>
+                <option value="dolor">Dolor</option>
+                <option value="inflamación">Inflamación</option>
+                <option value="sangrado">Sangrado</option>
+                <option value="sensibilidad">Sensibilidad</option>
+                <option value="movilidad">Movilidad</option>
+              </select>
+            </label>
+            <label>
+              Duración
+              <input id="duration" name="duration" type="text" placeholder="Ej. tres días" />
+            </label>
+          </div>
+          <label>
+            Diagnóstico presuntivo
+            <input id="diagnosis" name="diagnosis" type="text" placeholder="Diagnóstico de prueba" />
+          </label>
+          <label>
+            Plan de tratamiento
+            <input id="treatment" name="treatment" type="text" placeholder="Tratamiento de prueba" />
+          </label>
+          <label>
+            Observaciones
+            <textarea id="notes" name="notes" rows="4" placeholder="Notas adicionales"></textarea>
+          </label>
+        </fieldset>
+
+        <div class="form-footer">
+          <p>El formulario no se envía. Revisa visualmente los campos resaltados por DentAI.</p>
+          <button type="submit">Registrar atención</button>
+        </div>
+      </form>
+
+      <aside>
+        <h2>Prueba guiada sugerida</h2>
+        <p>Di, haciendo una pausa entre cada respuesta: “Nombre del paciente” → “Ana Torres” → “Confirmar”. Después: “DNI del paciente” → “uno dos tres cuatro cinco seis siete ocho” → “Confirmar”. Continúa con “Pieza dental” o di “Siguiente campo”.</p>
+      </aside>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+:root {
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #172b2a;
+  background: #f3f5f1;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #172b2a;
+  --muted: #687875;
+  --green: #18775d;
+  --line: #dce4dc;
+  --paper: #fff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(ellipse at 12% 0%, #e1eee5 0, transparent 42%), #f3f5f1;
+}
+
+button, input { font: inherit; }
+
+button {
+  min-height: 40px;
+  padding: 0 16px;
+  color: #fff;
+  background: #18775d;
+  border: 1px solid #18775d;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover:not(:disabled) { background: #12644d; }
+button:disabled { cursor: wait; opacity: .6; }
+button.primary { color: white; background: #18775d; }
+button.quiet { color: #65746f; background: transparent; border-color: #cbd7cf; }
+
+.workspace {
+  width: min(100% - 48px, 1024px);
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(23, 43, 42, .12);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font: 700 19px 'Trebuchet MS', sans-serif;
+}
+
+.wordmark-mark {
+  display: grid;
+  width: 30px;
+  aspect-ratio: 1;
+  place-items: center;
+  color: white;
+  background: var(--green);
+  border-radius: 8px 8px 8px 2px;
+  font-size: 16px;
+}
+
+.clinic-label, .eyebrow, .status, footer {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.clinic-label { color: var(--muted); }
+.clinic-label span { padding: 0 5px; color: #93a39b; }
+
+.welcome { padding: 68px 0 38px; }
+.eyebrow { margin: 0 0 12px; color: var(--green); }
+
+h1, h2 { font-family: Georgia, serif; letter-spacing: 0; }
+h1 { margin: 0; font-size: 36px; line-height: 1.2; }
+.intro { max-width: 530px; margin: 13px 0 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+.session-panel {
+  padding: 26px 30px 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 14px 36px rgba(24, 55, 43, .045);
+}
+
+.panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.panel-heading .eyebrow { margin-bottom: 8px; }
+h2 { margin: 0; font-size: 21px; }
+.status { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; color: #2b6b50; background: #eaf4ec; border-radius: 3px; font-size: 10px; }
+.status-dot { width: 7px; aspect-ratio: 1; background: #39885c; border-radius: 50%; }
+.panel-rule { height: 1px; margin: 22px 0 17px; background: var(--line); }
+.panel-note { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+.form-section { display: grid; gap: 14px; }
+.form-section label { color: var(--ink); font-size: 13px; font-weight: 700; }
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 12px;
+  color: var(--ink);
+  background: #fbfcfa;
+  border: 1px solid #cbd7cf;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+textarea:focus { outline: 2px solid #83b8a4; outline-offset: 1px; }
+textarea.code-input { font-family: Consolas, 'Courier New', monospace; font-size: 13px; }
+.transcript-preview { margin: 0; padding: 12px; background: #f4f7f3; border-left: 3px solid #18775d; color: #425550; font-size: 14px; line-height: 1.6; }
+.actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.confirmed-note { margin: 0; color: #23694e; font-size: 14px; line-height: 1.6; }
+pre { overflow-x: auto; margin: 0; padding: 14px; background: #f4f7f3; border: 1px solid var(--line); border-radius: 4px; font-size: 13px; }
+.notice { margin: 16px 0 0; padding: 11px 13px; color: #4e4930; background: #f7f3df; border-radius: 4px; font-size: 13px; }
+.session-id { margin: 18px 0 0; color: #82918a; font-family: Consolas, 'Courier New', monospace; font-size: 10px; overflow-wrap: anywhere; }
+
+.workflow { display: flex; align-items: center; gap: 14px; margin-top: 30px; }
+.workflow-step { display: inline-flex; align-items: center; gap: 8px; color: #9aa7a1; font-size: 12px; white-space: nowrap; }
+.workflow-step i { font-size: 10px; font-style: normal; }
+.workflow-step.active { color: var(--ink); font-weight: 700; }
+.workflow-step.active i { color: var(--green); }
+.workflow-line { flex: 1; height: 1px; min-width: 14px; background: var(--line); }
+
+footer { display: flex; justify-content: space-between; margin-top: auto; padding: 28px 0; color: #788781; font-size: 10px; letter-spacing: .04em; }
+footer span { font-weight: 500; }
+
+@media (max-width: 560px) {
+  .workspace { width: min(100% - 32px, 1024px); }
+  .topbar { height: 66px; }
+  .clinic-label { font-size: 9px; }
+  .welcome { padding: 50px 0 28px; }
+  h1 { font-size: 29px; }
+  .session-panel { padding: 22px 18px; }
+  .workflow { align-items: flex-start; gap: 8px; }
+  .workflow-step { flex-direction: column; align-items: flex-start; gap: 5px; white-space: normal; }
+  .workflow-line { margin-top: 6px; }
+  footer { gap: 16px; font-size: 9px; }
+}

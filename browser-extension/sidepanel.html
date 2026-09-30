@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DentAI</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand-mark" aria-hidden="true">
+        <span></span>
+      </div>
+      <div>
+        <p class="brand-name">DentAI</p>
+        <p class="brand-subtitle">Asistente de registro clínico</p>
+      </div>
+      <span id="connectionBadge" class="connection-badge">Comprobando</span>
+    </header>
+
+    <main>
+      <section class="capture-section" aria-labelledby="captureTitle">
+        <div class="section-heading">
+          <div>
+            <p id="captureStepLabel" class="step-label">Modo guiado</p>
+            <h1 id="captureTitle">Control por voz</h1>
+          </div>
+          <button id="rescanButton" class="text-button" type="button">Detectar campos</button>
+        </div>
+
+        <label class="mode-field fill-mode-field" for="fillMode">
+          Forma de llenado
+          <select id="fillMode">
+            <option value="guided">Campo por campo — solo voz</option>
+            <option value="batch">Dictado completo — revisar antes</option>
+          </select>
+        </label>
+
+        <div id="guidedInstructions" class="guided-instructions">
+          <strong>Sin teclado ni mouse después de iniciar</strong>
+          <span>Di el nombre del campo, dicta su valor y luego di “confirmar”. También puedes decir “corregir”, “siguiente campo” o “finalizar registro”.</span>
+        </div>
+
+        <div class="voice-instrument">
+          <button id="micButton" class="mic-button" type="button" aria-label="Iniciar dictado">
+            <span class="mic-icon" aria-hidden="true"></span>
+            <span id="micLabel">Dictar</span>
+          </button>
+          <div class="voice-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+
+        <div id="micStatus" class="mic-status" data-state="idle">
+          <span class="mic-status-dot" aria-hidden="true"></span>
+          <p><strong id="micStatusTitle">Micrófono sin comprobar</strong><span id="micStatusDetail">Pulsa “Probar micrófono” y habla durante dos segundos.</span></p>
+          <div class="mic-status-actions">
+            <button id="testMicButton" class="text-button" type="button">Probar micrófono</button>
+            <button id="openMicSettingsButton" class="text-button" type="button" hidden>Abrir ajustes</button>
+          </div>
+        </div>
+        <div class="audio-meter" aria-hidden="true"><span id="audioMeterBar"></span></div>
+
+        <label class="mode-field" for="speechMode">
+          Reconocimiento de voz
+          <select id="speechMode">
+            <option value="local">Local en este dispositivo</option>
+            <option value="online">En línea — solo datos ficticios</option>
+          </select>
+        </label>
+        <label class="mode-field operator-field" for="operatorName">
+          Profesional responsable del registro técnico
+          <input id="operatorName" type="text" maxlength="80" value="Profesional de prueba" />
+        </label>
+        <p id="privacyNote" class="privacy-note">El modo local requiere el paquete de español de Chrome y no envía el audio a terceros.</p>
+
+        <div data-batch-only>
+          <label class="transcript-label" for="transcript">Transcripción editable</label>
+          <textarea id="transcript" rows="5" placeholder="Ejemplo: paciente Ana Torres, DNI 12345678, pieza 26, síntoma dolor, duración tres días, diagnóstico caries profunda..."></textarea>
+          <div class="capture-actions">
+            <button id="previewButton" class="secondary-button" type="button">Preparar llenado</button>
+            <button id="clearButton" class="text-button" type="button">Limpiar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="review-section" data-batch-only aria-labelledby="reviewTitle">
+        <div class="section-heading compact">
+          <div>
+            <p class="step-label">2 de 3</p>
+            <h2 id="reviewTitle">Revisa los campos</h2>
+          </div>
+          <span id="fieldCount" class="field-count">0 detectados</span>
+        </div>
+        <div id="reviewEmpty" class="empty-state">
+          <span class="empty-glyph" aria-hidden="true">⌁</span>
+          <p>Dicta o escribe una frase para preparar el llenado.</p>
+        </div>
+        <div id="fieldList" class="field-list" hidden></div>
+      </section>
+
+      <section class="confirm-section" data-batch-only aria-labelledby="confirmTitle">
+        <div class="confirm-copy">
+          <p class="step-label">3 de 3</p>
+          <h2 id="confirmTitle">Confirma antes de escribir</h2>
+          <p>DentAI completa los campos, pero nunca envía el formulario.</p>
+        </div>
+        <button id="applyButton" class="primary-button" type="button" disabled>Confirmar y rellenar</button>
+      </section>
+
+      <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+
+      <details class="audit-panel">
+        <summary>Registro técnico <span id="auditCount">0 operaciones</span></summary>
+        <p>Guarda fecha, sitio y resultado. No guarda audio, transcripción ni valores clínicos.</p>
+        <div class="audit-actions">
+          <button id="exportLogButton" class="text-button" type="button">Exportar CSV</button>
+          <button id="clearLogButton" class="text-button danger" type="button">Borrar registro</button>
+        </div>
+      </details>
+    </main>
+
+    <footer>
+      <span>Prototipo local</span>
+      <span>Los datos deben confirmarse siempre</span>
+    </footer>
+
+    <script type="module" src="sidepanel.js"></script>
+  </body>
+</html>

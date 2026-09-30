@@ -1,0 +1,13 @@
+{
+  "name": "dentai-browser-extension",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/field-mapper.test.mjs",
+    "check": "node --check service-worker.js && node --check page-voice-bridge.js && node --check content-script.js && node --check sidepanel.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
